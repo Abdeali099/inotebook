@@ -7,6 +7,7 @@ import {
 import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
 import About from './components/About/About';
+import NoteState from './context/notes/NoteState';
 
 function App() {
 
@@ -14,21 +15,23 @@ function App() {
 
     <>
 
-      <Router>
+      <NoteState>
 
-        <NavBar />
+        <Router>
 
-        <Routes>
+          <NavBar />
 
-          <Route exact path='/' element={<Home />}> </Route>
-          <Route exact path='/home' element={<Home />}> </Route>
-          <Route exact path='/about' element={<About />}> </Route>
+          <Routes>
 
-        </Routes>
+            <Route exact path='/' element={<Home />}> </Route>
+            <Route exact path='/home' element={<Home />}> </Route>
+            <Route exact path='/about' element={<About />}> </Route>
 
-      </Router>
+          </Routes>
 
+        </Router>
 
+      </NoteState>
 
     </>
 
