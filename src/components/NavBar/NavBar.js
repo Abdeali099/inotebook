@@ -5,11 +5,9 @@ function Navbar() {
 
     let Location = useLocation();
     
-    useEffect(() => {
-
+/*     useEffect(() => {
         console.log(Location.pathname);
-
-    }, [Location]) // (No Need)
+    }, [Location]) */ // (No Need)
 
 
     return (

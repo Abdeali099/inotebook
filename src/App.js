@@ -21,13 +21,18 @@ function App() {
 
           <NavBar />
 
-          <Routes>
+          <div className="container my-3">
 
-            <Route exact path='/' element={<Home />}> </Route>
-            <Route exact path='/home' element={<Home />}> </Route>
-            <Route exact path='/about' element={<About />}> </Route>
+            <Routes>
 
-          </Routes>
+              <Route exact path='/' element={<Home />}> </Route>
+              <Route exact path='/home' element={<Home />}> </Route>
+              <Route exact path='/about' element={<About />}> </Route>
+
+            </Routes>
+
+          </div>
+
 
         </Router>
 
