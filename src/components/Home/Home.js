@@ -1,13 +1,7 @@
-import React, { useContext } from 'react'
-import NoteContext from '../../context/notes/NoteContext'
-import { Link} from 'react-router-dom'
-
+import React from 'react'
+import Notes from '../SavedNotes/Notes/Notes'
 
 function Home() {
-
-  const context = useContext(NoteContext);
-
-  const { savedNotes, setSavedNotes } = context;
 
   return (
 
@@ -44,25 +38,10 @@ function Home() {
       </div>
 
       <div className="container my-3">
+
         <h2>Your Notes</h2>
 
-        <div className="container my-3 d-flex justify-between">
-
-          {savedNotes.map((Element => {
-
-            return <div className="card" style={{width: "18rem",margin:"1rem"}}>
-              <div className="card-body">
-                <h5 className="card-title">{Element.title}</h5>
-                <p className="card-text">{Element.content}</p>
-                <p className="card-text">{Element.tag}</p>
-                <Link to="/" className="btn btn-primary">Go somewhere</Link>
-              </div>
-            </div>
-
-          }))}
-
-
-        </div>
+            <Notes/>
 
       </div>
 
