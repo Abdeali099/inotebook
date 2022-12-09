@@ -6,7 +6,7 @@ function Notes() {
 
     const context = useContext(NoteContext);
 
-    const { savedNotes, setSavedNotes } = context;
+    const { savedNotes, setSavedNotes } = context; // destructure context
 
     return (
         <div className="album py-5 bg-light">

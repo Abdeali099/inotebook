@@ -1,0 +1,17 @@
+.div_title{
+    display: flex;
+    align-items: center;
+}
+
+h5{
+    flex-grow: 8;
+    flex-shrink: 1;
+}
+
+i{
+    cursor: pointer;
+    flex-grow: 1;
+    font-size: 1.3rem;
+    flex-shrink: 2;
+
+}
