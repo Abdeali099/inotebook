@@ -8,6 +8,7 @@ import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
 import About from './components/About/About';
 import NoteState from './context/notes/NoteState';
+import Alert from './components/Alert/Alert';
 
 function App() {
 
@@ -21,7 +22,10 @@ function App() {
 
           <NavBar />
 
+
           <div className="container my-3">
+        
+          <Alert/>
 
             <Routes>
 
