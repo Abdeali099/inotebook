@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom'
+import NoteContext from '../../../context/notes/NoteContext'
 import "./NotesItem.css";
 
 
 function NotesItem(props) {
+
+    const context = useContext(NoteContext);
+
+    const {deleteNote} = context;
 
     const {savedNote} = props;
 
@@ -23,7 +28,7 @@ function NotesItem(props) {
                         <h5 className="card-title">{savedNote.title}</h5>
                         
                         <i className="fa fa-light fa-pen-to-square mx-2"></i>
-                        <i className="fa fa-regular fa-trash mx-2"></i>
+                        <i className="fa fa-regular fa-trash mx-2" onClick={()=>{deleteNote(savedNote._id)}}></i>
 
                         </div>
 
