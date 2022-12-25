@@ -7,7 +7,7 @@ function NotesItem(props) {
 
     const {savedNote} = props;
 
-    console.log(savedNote);
+    // console.log(savedNote);
 
     return (
 
@@ -40,4 +40,4 @@ function NotesItem(props) {
     )
 }
 
-export default NotesItem
+export default NotesItem;
