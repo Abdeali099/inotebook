@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom'
 import NoteContext from '../../../context/notes/NoteContext'
 import "./NotesItem.css";
 
@@ -34,7 +33,6 @@ function NotesItem(props) {
 
                         <p className="card-text">{savedNote.content}</p>
                         <p className="card-text">{savedNote.tag}</p>
-                        <Link to="/" className="btn btn-primary">Go somewhere</Link>
                     </div>
 
                 </div>
