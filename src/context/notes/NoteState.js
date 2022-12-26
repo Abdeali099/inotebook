@@ -74,7 +74,7 @@ const NoteState = (props) => {
     /* delete Notes */
     const deleteNote=(id)=>{
 
-        console.log("deleting note of Id : ",id);
+        // console.log("deleting note of Id : ",id);
 
         const newNotes=savedNotes.filter((note)=>{return note._id!==id})
 
@@ -82,7 +82,16 @@ const NoteState = (props) => {
     }
 
     /* edit  Notes */
-    const editNotes=(id)=>{
+    const editNotes=(id,title,content,tag)=>{
+
+        savedNotes.forEach(notes => {
+            if(notes._id==id)
+            {
+                notes.title=title;
+                notes.content=content;
+                notes.tag=tag;
+            }
+        });
         
     }
 

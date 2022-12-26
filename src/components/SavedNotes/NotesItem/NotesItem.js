@@ -8,7 +8,7 @@ function NotesItem(props) {
 
     const context = useContext(NoteContext);
 
-    const {deleteNote} = context;
+    const {deleteNote,editNote} = context;
 
     const {savedNote} = props;
 
