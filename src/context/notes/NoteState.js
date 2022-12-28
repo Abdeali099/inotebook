@@ -53,6 +53,8 @@ const NoteState = (props) => {
 
         const newNote = await response.json();
 
+        console.log("Response of addition : ",newNote);
+
         setSavedNotes(savedNotes.concat(newNote));
 
     }
@@ -73,7 +75,7 @@ const NoteState = (props) => {
 
         const fetchedNotes = await response.json();
 
-        // console.log(fetchedNotes);
+        console.log("Response of deletion : ", fetchedNotes);
 
         /* deleting from client side */
         const newNotes = savedNotes.filter((note) => { return note._id !== id })
@@ -92,6 +94,8 @@ const NoteState = (props) => {
             tag
         };
 
+        console.log("Updated elemrnts : ",updatedElement);
+
         const response = await fetch(`${host}/api/notes/updateNotes/${id}`, {
 
             method: 'PUT',
@@ -104,18 +108,31 @@ const NoteState = (props) => {
 
         });
 
-        const jsonResponse = response.json();
+        const jsonResponse = await response.json();
 
-        // console.log(jsonResponse);
+        console.log("Response of Updation : ",jsonResponse);
 
         /* Logic in edit on client side */
-        savedNotes.forEach(notes => {
-            if (notes._id == id) {
-                notes.title = title;
-                notes.content = content;
-                notes.tag = tag;
+
+        // Here we will make a newNote for Updation (we use this because simple was not working)//
+
+        let newNotes=JSON.parse(JSON.stringify(savedNotes));
+
+        for (let index = 0; index < newNotes.length; index++) {
+            const element = newNotes[index];
+
+            if(element._id===id)
+            {
+                element.title=title
+                element.content=content
+                element.tag=tag
+                break;
             }
-        });
+            
+        }
+        console.log(newNotes);
+
+        setSavedNotes(newNotes);
 
     }
 

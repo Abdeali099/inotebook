@@ -7,7 +7,7 @@ function Notes() {
 
     const context = useContext(NoteContext);
 
-    const { savedNotes, fetchNote } = context; // destructure context
+    const { savedNotes, fetchNote ,editNotes} = context; // destructure context
 
     useEffect(() => {
 
@@ -22,22 +22,24 @@ function Notes() {
 
     */
 
-    const [updateNote, setUpdateNote] = useState({ editTitle: "", editContent: "", editTag: "" })
+    const [updateNote, setUpdateNote] = useState({ _id: "", editTitle: "", editContent: "", editTag: "" })
 
     const ref = useRef(null);
 
     const updateNoteOnCLick = (currentNote) => {
         ref.current.click();
-        setUpdateNote({ editTitle: currentNote.title, editContent: currentNote.content, editTag: currentNote.tag });
+        setUpdateNote({ _id:currentNote._id ,editTitle: currentNote.title, editContent: currentNote.content, editTag: currentNote.tag });
     }
 
     const handleOnClick = () => {
+
+        editNotes(updateNote._id,updateNote.editTitle,updateNote.editContent,updateNote.editTag);
 
         document.getElementById("editTitle").value = "";
         document.getElementById("editContent").value = "";
         document.getElementById("editTag").value = "";
 
-        setUpdateNote({ editTitle: "", editContent: "", editTag: "" });
+        setUpdateNote({_id:"", editTitle: "", editContent: "", editTag: "" });
 
         ref.current.click();
 
