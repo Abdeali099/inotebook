@@ -6,9 +6,9 @@ const NoteState = (props) => {
 
     const host = `http://localhost:5000`;
 
-    let fetchedNotes = [];
+    // let fetchedNotes = [];
 
-    const [savedNotes, setSavedNotes] = useState(fetchedNotes);
+    const [savedNotes, setSavedNotes] = useState([]);
 
     /* <---- fetching all notes Notes ----> */
 
@@ -25,11 +25,11 @@ const NoteState = (props) => {
             }
         });
 
-        fetchedNotes = await response.json();
+        const fetchedNotes = await response.json();
 
         setSavedNotes(fetchedNotes);
 
-        console.log(fetchedNotes);
+        // console.log(fetchedNotes);
 
     }
 
@@ -37,7 +37,7 @@ const NoteState = (props) => {
 
     const addNote = async (newNoteData) => {
 
-        console.log(newNoteData);
+        // console.log(newNoteData);
 
         /* Call Add API */
         const response = await fetch(`${host}/api/notes/addNotes`, {
@@ -71,9 +71,9 @@ const NoteState = (props) => {
             }
         });
 
-        fetchedNotes = await response.json();
+        const fetchedNotes = await response.json();
 
-        console.log(fetchedNotes);
+        // console.log(fetchedNotes);
 
         /* deleting from client side */
         const newNotes = savedNotes.filter((note) => { return note._id !== id })
@@ -106,7 +106,7 @@ const NoteState = (props) => {
 
         const jsonResponse = response.json();
 
-        console.log(jsonResponse);
+        // console.log(jsonResponse);
 
         /* Logic in edit on client side */
         savedNotes.forEach(notes => {
