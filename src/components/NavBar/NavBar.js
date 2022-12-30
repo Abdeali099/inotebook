@@ -30,15 +30,15 @@ function Navbar() {
                                 <Link className={`nav-link ${(Location.pathname === ("/home") || (Location.pathname === "/")) ? "active" : ""}`} to="/home">Home</Link>
                             </li>
 
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <Link className={`nav-link ${Location.pathname === "/about" ? "active" : ""}`} to="/about">About</Link>
-                            </li>
+                            </li> */}
 
                         </ul>
 
                         <form className="d-flex" style={{alignItems: "center",justifyContent: "center",gap: "1rem"}}>
-                            <Link to="/" className="btn btn-primary mx-2 me-2" role="button">SignIn</Link>
-                            <Link to="/" className="btn btn-primary max-2 me-2" role="button">SignUp</Link>
+                            <Link to="/login" className="btn btn-primary mx-2 me-2" role="button">Login</Link>
+                            <Link to="/signup" className="btn btn-primary max-2 me-2" role="button">SignUp</Link>
                         </form>
 
 

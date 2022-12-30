@@ -69,7 +69,7 @@ function Notes() {
 
                             {savedNotes.length===0 && <pre>Make Notes To Display.</pre>}
 
-                            {savedNotes.map((savedNote => {
+                            {savedNotes.map((savedNote  => {
 
                                 return <NotesItem savedNote={savedNote} updateNoteOnCLick={updateNoteOnCLick} key={savedNote._id} />
 
