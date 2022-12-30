@@ -35,9 +35,9 @@ function Notes() {
 
         editNotes(updateNote._id,updateNote.editTitle,updateNote.editContent,updateNote.editTag);
 
-        document.getElementById("editTitle").value = "";
-        document.getElementById("editContent").value = "";
-        document.getElementById("editTag").value = "";
+        // document.getElementById("editTitle").value = "";
+        // document.getElementById("editContent").value = "";
+        // document.getElementById("editTag").value = "";
 
         setUpdateNote({_id:"", editTitle: "", editContent: "", editTag: "" });
 
@@ -61,11 +61,13 @@ function Notes() {
 
                 <h2>Your Notes</h2>
 
-                <div className="album py-5 bg-light">
+                <div className="album py-5">
 
                     <div className="container">
 
                         <div className="row row-cols-1 row-cols-sm-3 row-cols-md-4 g-3">
+
+                            {savedNotes.length===0 && <pre>Make Notes To Display.</pre>}
 
                             {savedNotes.map((savedNote => {
 
