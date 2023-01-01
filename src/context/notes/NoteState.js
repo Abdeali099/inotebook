@@ -27,7 +27,13 @@ const NoteState = (props) => {
 
         const fetchedNotes = await response.json();
 
-        setSavedNotes(fetchedNotes);
+        console.log("response : ",fetchedNotes);
+
+        console.log("response : ",fetchedNotes.allNotes);
+
+        setSavedNotes(fetchedNotes.allNotes);
+
+        console.log(savedNotes);
 
         // console.log(fetchedNotes);
 
@@ -53,9 +59,9 @@ const NoteState = (props) => {
 
         const newNote = await response.json();
 
-        console.log("Response of addition : ",newNote);
+        console.log("Response of addition : ",newNote.savedNotes);
 
-        setSavedNotes(savedNotes.concat(newNote));
+        setSavedNotes(savedNotes.concat(newNote.savedNotes));
 
     }
 
@@ -116,6 +122,8 @@ const NoteState = (props) => {
 
         // Here we will make a newNote for Updation (we use this because simple was not working)//
 
+
+        // idea  : here i can use find() also
         let newNotes=JSON.parse(JSON.stringify(savedNotes));
 
         for (let index = 0; index < newNotes.length; index++) {

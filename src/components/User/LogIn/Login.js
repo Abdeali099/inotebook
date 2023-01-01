@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 
 function Login() {
 
     const host = `http://localhost:5000`;
+    let navigate = useNavigate();
 
     const [credential, setCredential] = useState({ email: "", password: "" })
 
@@ -31,6 +33,7 @@ function Login() {
             
             localStorage.setItem('token',json.authToken);
 
+            navigate("/");
 
         }
 
