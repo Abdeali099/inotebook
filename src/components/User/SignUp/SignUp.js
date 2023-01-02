@@ -82,17 +82,17 @@ function SignUp() {
 
           <div className="mb-3">
             <label htmlFor="name" className="form-label">Name</label>
-            <input type="name" className="form-control" id="name" value={newUserData.name}  name="name" onChange={handleOnChange} />
+            <input type="text" className="form-control" id="name" value={newUserData.name}  name="name" onChange={handleOnChange} placeholder="eg. abd@123" />
           </div>
 
           <div className="mb-3">
             <label htmlFor="email" className="form-label">Email address</label>
-            <input type="email" className="form-control" id="email" value={newUserData.email} name="email" aria-describedby="emailHelp" onChange={handleOnChange}  />
+            <input type="email" className="form-control" id="email" value={newUserData.email} name="email" aria-describedby="emailHelp" onChange={handleOnChange}  placeholder="eg. xyz123@mail.com"/>
           </div>
 
           <div className="mb-3">
             <label htmlFor="password" className="form-label">Password</label>
-            <input type="password" className="form-control" id="password" value={newUserData.password} name="password" onChange={handleOnChange}  autoComplete={"true"} />
+            <input type="password" className="form-control" id="password" value={newUserData.password} name="password" onChange={handleOnChange}  autoComplete={"true"} placeholder=" password length must be minimum 6"/>
           </div>
 
           <div className="mb-3">
