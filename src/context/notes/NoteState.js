@@ -68,6 +68,12 @@ const NoteState = (props) => {
     /* <--- delete Notes ---> */
     const deleteNote = async (id) => {
 
+        const res=window.confirm("Are you sure? It will delete Permanantly");
+
+        if(res==false){
+            return;
+        }
+
         /* deleting from database-Making API call */
 
         const response = await fetch(`${host}/api/notes/deleteNotes/${id}`, {
