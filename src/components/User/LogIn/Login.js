@@ -12,18 +12,17 @@ function Login() {
 
         e.preventDefault();
 
-        setCredential({ email: "", password: "" });
-
         const response = await fetch(`${host}/api/auth/login`, {
 
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Mzg3MjIyMjExMjFkYzMyNWM0YTVhN2YiLCJpYXQiOjE2Njk4NzQ1MzJ9.rlWbXPyp_rApfQ1f2IuQCM-HV3ohaMFTpKzIPBaE8pM',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(credential)
 
         });
+
+        setCredential({ email: "", password: "" });
 
         const json = await response.json();
 
