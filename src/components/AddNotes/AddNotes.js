@@ -42,7 +42,7 @@ function AddNotes() {
 
     return (
         <>
-            <div className="container my-3">
+            <div className="container">
                 <h2>Add Notes</h2>
             </div>
 

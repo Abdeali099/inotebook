@@ -61,7 +61,7 @@ function Notes() {
 
                 <h2>Your Notes</h2>
 
-                <div className="album py-5">
+                <div className="album pb-5 pt-3">
 
                     <div className="container">
 

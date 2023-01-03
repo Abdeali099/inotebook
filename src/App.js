@@ -8,42 +8,46 @@ import NavBar from './components/NavBar/NavBar';
 import Home from './components/Home/Home';
 // import About from './components/About/About';
 import NoteState from './context/notes/NoteState';
-// import Alert from './components/Alert/Alert';
 import Login from './components/User/LogIn/Login';
 import SignUp from './components/User/SignUp/SignUp';
+import AlertState from './context/Alert/AlertState';
 
 function App() {
+
+
 
   return (
 
     <>
 
-      <NoteState>
+      <AlertState>
 
-        <Router>
+        <NoteState>
 
-          <NavBar />
+          <Router>
 
-          <div className="container my-3">
+            <NavBar />
 
-            {/* <Alert/> */}
+            <div className="container">
 
-            <Routes>
+              <Routes>
 
-              <Route exact path='/' element={<Home />}> </Route>
-              <Route exact path='/home' element={<Home />}> </Route>
-              {/* <Route exact path='/about' element={<About />}> </Route> */}
-              <Route exact path='/login' element={<Login />}> </Route>
-              <Route exact path='/signup' element={<SignUp />}> </Route>
+                <Route exact path='/' element={<Home />}> </Route>
+                <Route exact path='/home' element={<Home />}> </Route>
+                <Route exact path='/login' element={<Login />}> </Route>
+                <Route exact path='/signup' element={<SignUp />}> </Route>
 
-            </Routes>
+              </Routes>
 
-          </div>
+            </div>
 
 
-        </Router>
+          </Router>
 
-      </NoteState>
+        </NoteState>
+
+      </AlertState>
+
 
     </>
 

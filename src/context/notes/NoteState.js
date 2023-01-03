@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState ,useContext} from 'react'
+import AlertContext from '../Alert/AlertContext';
 import NoteContext from "./NoteContext";
 
 
@@ -6,9 +7,16 @@ const NoteState = (props) => {
 
     const host = `http://localhost:5000`;
 
-    // let fetchedNotes = [];
-
     const [savedNotes, setSavedNotes] = useState([]);
+
+    /* <--  For showing Alert msgs --> */
+
+    const context = useContext(AlertContext);
+
+    // console.log(context);
+
+    const {setAlertMsg} = context;
+
 
     /* <---- fetching all notes Notes ----> */
 
@@ -63,6 +71,9 @@ const NoteState = (props) => {
 
         setSavedNotes(savedNotes.concat(newNote.savedNotes));
 
+        setAlertMsg("Note Added Successfully!!", "success");
+
+
     }
 
     /* <--- delete Notes ---> */
@@ -93,6 +104,8 @@ const NoteState = (props) => {
         const newNotes = savedNotes.filter((note) => { return note._id !== id })
 
         setSavedNotes(newNotes);
+
+        setAlertMsg("Note Deleted Successfully!!", "success");
     }
 
     /* <--- edit  Notes --->*/
@@ -147,6 +160,9 @@ const NoteState = (props) => {
         console.log(newNotes);
 
         setSavedNotes(newNotes);
+
+        setAlertMsg("Note Updated Successfully!!", "success");
+
 
     }
 

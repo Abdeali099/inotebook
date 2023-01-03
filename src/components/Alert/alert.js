@@ -1,14 +1,21 @@
 import React from 'react'
 
 function Alert(props) {
+
+    const {showAlert,alert} = props;
+
     return (
         <>
-            <div className="alert alert-primary d-flex align-items-center" role="alert">
-            {/* <i className="fa fa-circle-exclamation mx-2"></i> */}
-                <div>
-                    {props.message}
+            { showAlert &&  <div style={{ height: '20px',width:"40%",margin:"auto" }}  className={`${showAlert=== null  ? "invisible": "visible"}`}  >
+
+                <div className={`alert alert-${alert.type} alert-dismissible fade ${showAlert=== true ? "show": "close"} my-2`} role="alert">
+
+                    <strong>{(alert.type).toString().charAt(0).toUpperCase() + (alert.type).slice(1)}</strong> : {(alert.msg)}
+
                 </div>
-            </div>
+
+            </div>} 
+
         </>
 
     )

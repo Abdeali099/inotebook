@@ -1,5 +1,8 @@
-import React, { useEffect } from 'react'
+import React, {  useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import AlertContext from '../../context/Alert/AlertContext';
+import Alert from '../Alert/Alert';
+
 
 function Navbar() {
 
@@ -9,10 +12,15 @@ function Navbar() {
             console.log(Location.pathname);
         }, [Location]) */ // (No Need)
 
+    /* <--  For showing Alert msgs --> */
+
+    const context = useContext(AlertContext);
+
+    const { alert, showAlert } = context;
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{marginBottom:"1rem"}}>
 
                 <div className="container-fluid">
 
@@ -36,7 +44,7 @@ function Navbar() {
 
                         </ul>
 
-                        <form className="d-flex" style={{alignItems: "center",justifyContent: "center",gap: "1rem"}}>
+                        <form className="d-flex" style={{ alignItems: "center", justifyContent: "center", gap: "1rem" }}>
                             <Link to="/login" className="btn btn-primary mx-2 me-2" role="button">Login</Link>
                             <Link to="/signup" className="btn btn-primary max-2 me-2" role="button">SignUp</Link>
                         </form>
@@ -47,6 +55,15 @@ function Navbar() {
                 </div>
 
             </nav>
+
+            {/* Alert Component */}
+
+            <div className="container" >
+
+                <Alert alert={alert} showAlert={showAlert} />
+
+            </div>
+
 
         </>
     )
