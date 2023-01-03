@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
@@ -28,16 +28,16 @@ function Login() {
 
         console.log(json);
 
-        if (json.Success===true) {
-            
-            localStorage.setItem('token',json.authToken);
+        if (json.Success === true) {
+
+            sessionStorage.setItem('token', json.authToken);
 
             navigate("/");
 
         }
 
         else {
-                alert("Please Login with Proper Credential!")
+            alert("Please Login with Proper Credential!")
         }
 
 
@@ -53,7 +53,9 @@ function Login() {
 
         <>
 
-            <div className="container">
+            <div className="container mt-3">
+
+                <h2 className='text-center'>Login to continue to make your notes</h2>
 
                 <form onSubmit={handelOnSubmit}>
 

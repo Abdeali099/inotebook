@@ -1,4 +1,5 @@
-import React, { useContext, useEffect ,useRef,useState} from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import NoteContext from '../../../context/notes/NoteContext'
 import AddNotes from '../../AddNotes/AddNotes';
 import NotesItem from '../NotesItem/NotesItem'
@@ -7,11 +8,19 @@ function Notes() {
 
     const context = useContext(NoteContext);
 
-    const { savedNotes, fetchNote ,editNotes} = context; // destructure context
+    let navigate = useNavigate();
+
+    const { savedNotes, fetchNote, editNotes } = context; // destructure context
 
     useEffect(() => {
 
-        fetchNote();
+        if (sessionStorage.getItem('token')) {
+            fetchNote();
+        }
+
+        else {
+            navigate("/login");
+        }
 
         // eslint-disable-next-line
 
@@ -28,18 +37,18 @@ function Notes() {
 
     const updateNoteOnCLick = (currentNote) => {
         ref.current.click();
-        setUpdateNote({ _id:currentNote._id ,editTitle: currentNote.title, editContent: currentNote.content, editTag: currentNote.tag });
+        setUpdateNote({ _id: currentNote._id, editTitle: currentNote.title, editContent: currentNote.content, editTag: currentNote.tag });
     }
 
     const handleOnClick = () => {
 
-        editNotes(updateNote._id,updateNote.editTitle,updateNote.editContent,updateNote.editTag);
+        editNotes(updateNote._id, updateNote.editTitle, updateNote.editContent, updateNote.editTag);
 
         // document.getElementById("editTitle").value = "";
         // document.getElementById("editContent").value = "";
         // document.getElementById("editTag").value = "";
 
-        setUpdateNote({_id:"", editTitle: "", editContent: "", editTag: "" });
+        setUpdateNote({ _id: "", editTitle: "", editContent: "", editTag: "" });
 
         ref.current.click();
 
@@ -67,9 +76,9 @@ function Notes() {
 
                         <div className="row row-cols-1 row-cols-sm-3 row-cols-md-4 g-3">
 
-                            {savedNotes.length===0 && <pre>Make Notes To Display.</pre>}
+                            {savedNotes.length === 0 && <pre>Make Notes To Display.</pre>}
 
-                            {savedNotes.map((savedNote  => {
+                            {savedNotes.map((savedNote => {
 
                                 return <NotesItem savedNote={savedNote} updateNoteOnCLick={updateNoteOnCLick} key={savedNote._id} />
 
@@ -88,7 +97,7 @@ function Notes() {
 
             {/* <!-- Button trigger modal --> */}
 
-            <button type="button" className="btn btn-primary d-none"  ref={ref}   data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" className="btn btn-primary d-none" ref={ref} data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
             </button>
 
@@ -111,17 +120,17 @@ function Notes() {
 
                                 <div className="mb-3">
                                     <label htmlFor="editTitle" className="form-label">Title</label>
-                                    <input type="text" className="form-control" id="editTitle" name="editTitle"  value={updateNote.editTitle}  onChange={handleOnChange} />
+                                    <input type="text" className="form-control" id="editTitle" name="editTitle" value={updateNote.editTitle} onChange={handleOnChange} />
                                 </div>
 
                                 <div className="mb-3">
                                     <label htmlFor="editContent" className="form-label">Content</label>
-                                    <input type="text" className="form-control" id="editContent" name="editContent" autoComplete='true' value={updateNote.editContent}  onChange={handleOnChange} />
+                                    <input type="text" className="form-control" id="editContent" name="editContent" autoComplete='true' value={updateNote.editContent} onChange={handleOnChange} />
                                 </div>
 
                                 <div className="mb-3">
                                     <label htmlFor="editTag" className="form-label">Tags</label>
-                                    <input type="text" className="form-control" id="editTag" name="editTag" autoComplete='true'  value={updateNote.editTag} onChange={handleOnChange} />
+                                    <input type="text" className="form-control" id="editTag" name="editTag" autoComplete='true' value={updateNote.editTag} onChange={handleOnChange} />
                                 </div>
 
                             </form>

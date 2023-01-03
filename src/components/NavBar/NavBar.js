@@ -1,5 +1,5 @@
-import React, {  useContext } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import AlertContext from '../../context/Alert/AlertContext';
 import Alert from '../Alert/Alert';
 
@@ -7,6 +7,9 @@ import Alert from '../Alert/Alert';
 function Navbar() {
 
     let Location = useLocation();
+
+    let navigate=useNavigate();
+
 
     /*     useEffect(() => {
             console.log(Location.pathname);
@@ -18,9 +21,17 @@ function Navbar() {
 
     const { alert, showAlert } = context;
 
+    const handleOnLogout = () =>{
+
+        sessionStorage.removeItem('token');
+
+        navigate('/login');
+
+    }
+
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{marginBottom:"1rem"}}>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{ marginBottom: "1rem" }}>
 
                 <div className="container-fluid">
 
@@ -44,10 +55,27 @@ function Navbar() {
 
                         </ul>
 
+
+
                         <form className="d-flex" style={{ alignItems: "center", justifyContent: "center", gap: "1rem" }}>
-                            <Link to="/login" className="btn btn-primary mx-2 me-2" role="button">Login</Link>
-                            <Link to="/signup" className="btn btn-primary max-2 me-2" role="button">SignUp</Link>
+
+                            {
+                                !sessionStorage.getItem('token') ?
+
+                                    <>
+                                        <Link to="/login" className="btn btn-primary mx-2 me-2" role="button">Login</Link>
+                                        <Link to="/signup" className="btn btn-primary max-2 me-2" role="button">SignUp</Link>
+                                    </>
+
+                                    :
+
+                                    <button className="btn btn-primary" onClick={handleOnLogout}>Logout</button>
+
+                            }
+
                         </form>
+
+
 
 
                     </div>

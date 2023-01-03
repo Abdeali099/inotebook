@@ -34,7 +34,7 @@ function SignUp() {
 
     if (json.Success === true) {
 
-      localStorage.setItem('token', json.authToken);
+      sessionStorage.setItem('token', json.authToken);
 
       navigate("/");
 
@@ -76,7 +76,10 @@ function SignUp() {
   return (
     <>
 
-      <div className='container'>
+      <div className='container mt-3'>
+
+        <h2 className='text-center'>Create an account to use iNoteBook</h2>
+
 
         <form onSubmit={handelOnSubmit}>
 
