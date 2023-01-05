@@ -19,11 +19,13 @@ function Navbar() {
 
     const context = useContext(AlertContext);
 
-    const { alert, showAlert } = context;
+    const { alert, showAlert,setAlertMsg } = context;
 
     const handleOnLogout = () =>{
 
         sessionStorage.removeItem('token');
+
+        setAlertMsg("Logout Successfully!!", "success");
 
         navigate('/login');
 

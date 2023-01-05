@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AlertContext from '../../../context/Alert/AlertContext';
 
 function Login() {
 
     const host = `http://localhost:5000`;
     let navigate = useNavigate();
 
-    const [credential, setCredential] = useState({ email: "", password: "" })
+    const [credential, setCredential] = useState({ email: "", password: "" });
+
+    /* <--  For showing Alert msgs --> */
+
+    const context = useContext(AlertContext);
+
+    // console.log(context);
+
+    const {setAlertMsg} = context;
+
 
     const handelOnSubmit = async (e) => {
 
@@ -32,12 +42,16 @@ function Login() {
 
             sessionStorage.setItem('token', json.authToken);
 
+            setAlertMsg("Login Successfully!!", "success");
+
+
             navigate("/");
 
         }
 
         else {
-            alert("Please Login with Proper Credential!")
+            // alert("Please Login with Proper Credential!");
+            setAlertMsg("Login fail!!", "danger");
         }
 
 

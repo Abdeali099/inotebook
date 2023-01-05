@@ -1,5 +1,6 @@
-import React,{useState} from 'react'
+import React, { useState,useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AlertContext from '../../../context/Alert/AlertContext';
 
 
 function SignUp() {
@@ -9,6 +10,15 @@ function SignUp() {
   let navigate = useNavigate();
 
   const [newUserData, setNewUserData] = useState({ name: "", email: "", password: "", cpassword: "" });
+
+      /* <--  For showing Alert msgs --> */
+
+      const context = useContext(AlertContext);
+
+      // console.log(context);
+  
+      const {setAlertMsg} = context;
+  
 
   const handelOnSubmit = async (e) => {
 
@@ -36,12 +46,16 @@ function SignUp() {
 
       sessionStorage.setItem('token', json.authToken);
 
+            setAlertMsg("Signup Successfully!!", "success");
+
+
+
       navigate("/");
 
     }
 
     else {
-      alert("Please try again !!")
+      setAlertMsg("Signup fail!!", "danger");
     }
 
 
