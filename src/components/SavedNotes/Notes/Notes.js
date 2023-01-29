@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NoteContext from '../../../context/notes/NoteContext'
 import AddNotes from '../../AddNotes/AddNotes';
-import NotesItem from '../NotesItem/NotesItem'
+import NotesItem from '../NotesItem/NotesItem';
 
 function Notes() {
 
@@ -27,7 +27,7 @@ function Notes() {
     }, []);
 
     /* This Method is used for upation of Note.
-    How ? :- whenever cliked on edit icon in NotesItem it wall call.
+    How ? :- whenever cliked on edit icon in NotesItem it will call.
 
     */
 
@@ -65,7 +65,7 @@ function Notes() {
     return (
         <>
             <AddNotes />
-
+            {/* It consist simple form of adding New Notes */}
             <div className="container my-3">
 
                 <h2>Your Notes</h2>

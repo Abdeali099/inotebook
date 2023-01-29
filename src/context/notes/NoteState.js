@@ -18,7 +18,7 @@ const NoteState = (props) => {
     const {setAlertMsg} = context;
 
 
-    /* <---- fetching all notes Notes ----> */
+    /* <---- fetching all notes  ----> */
 
     const fetchNote = async () => {
 
@@ -35,23 +35,13 @@ const NoteState = (props) => {
 
         const fetchedNotes = await response.json();
 
-        console.log("response : ",fetchedNotes);
-
-        console.log("response : ",fetchedNotes.allNotes);
-
         setSavedNotes(fetchedNotes.allNotes);
-
-        console.log(savedNotes);
-
-        // console.log(fetchedNotes);
 
     }
 
     /* <-- add Notes --> */
 
     const addNote = async (newNoteData) => {
-
-        // console.log(newNoteData);
 
         /* Call Add API */
         const response = await fetch(`${host}/api/notes/addNotes`, {
@@ -69,11 +59,7 @@ const NoteState = (props) => {
 
         console.log("Response of addition : ",newNote.savedNotes);
 
-        setSavedNotes(savedNotes.concat(newNote.savedNotes));
-
         setAlertMsg("Note Added Successfully!!", "success");
-
-
     }
 
     /* <--- delete Notes ---> */
@@ -98,8 +84,6 @@ const NoteState = (props) => {
 
         const fetchedNotes = await response.json();
 
-        console.log("Response of deletion : ", fetchedNotes);
-
         /* deleting from client side */
         const newNotes = savedNotes.filter((note) => { return note._id !== id })
 
@@ -119,8 +103,6 @@ const NoteState = (props) => {
             tag
         };
 
-        console.log("Updated elemrnts : ",updatedElement);
-
         const response = await fetch(`${host}/api/notes/updateNotes/${id}`, {
 
             method: 'PUT',
@@ -134,8 +116,6 @@ const NoteState = (props) => {
         });
 
         const jsonResponse = await response.json();
-
-        console.log("Response of Updation : ",jsonResponse);
 
         /* Logic in edit on client side */
 
@@ -157,13 +137,9 @@ const NoteState = (props) => {
             }
             
         }
-        console.log(newNotes);
-
         setSavedNotes(newNotes);
 
         setAlertMsg("Note Updated Successfully!!", "success");
-
-
     }
 
     return (

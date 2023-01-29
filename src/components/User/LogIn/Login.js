@@ -9,14 +9,10 @@ function Login() {
 
     const [credential, setCredential] = useState({ email: "", password: "" });
 
-    /* <--  For showing Alert msgs --> */
-
     const context = useContext(AlertContext);
-
-    // console.log(context);
-
     const {setAlertMsg} = context;
-
+    
+    /* <--  For showing Alert msgs --> */
 
     const handelOnSubmit = async (e) => {
 
@@ -36,14 +32,11 @@ function Login() {
 
         const json = await response.json();
 
-        console.log(json);
-
         if (json.Success === true) {
 
             sessionStorage.setItem('token', json.authToken);
 
             setAlertMsg("Login Successfully!!", "success");
-
 
             navigate("/");
 

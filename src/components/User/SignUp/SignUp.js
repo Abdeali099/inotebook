@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AlertContext from '../../../context/Alert/AlertContext';
 
@@ -9,16 +9,12 @@ function SignUp() {
 
   let navigate = useNavigate();
 
+  /* <--  For showing Alert msgs --> */
+
+  const context = useContext(AlertContext);
+  const { setAlertMsg } = context;
+
   const [newUserData, setNewUserData] = useState({ name: "", email: "", password: "", cpassword: "" });
-
-      /* <--  For showing Alert msgs --> */
-
-      const context = useContext(AlertContext);
-
-      // console.log(context);
-  
-      const {setAlertMsg} = context;
-  
 
   const handelOnSubmit = async (e) => {
 
@@ -46,9 +42,7 @@ function SignUp() {
 
       sessionStorage.setItem('token', json.authToken);
 
-            setAlertMsg("Signup Successfully!!", "success");
-
-
+      setAlertMsg("Signup Successfully!!", "success");
 
       navigate("/");
 
@@ -77,7 +71,7 @@ function SignUp() {
     
     */
 
-    if ((newUserData.name.length == 0 || newUserData.name.length < 3) || (newUserData.email.length == 0) || (newUserData.password.length == 0 ) || (newUserData.cpassword.length == 0 ) ||(newUserData.password!=newUserData.cpassword) ) {
+    if ((newUserData.name.length == 0 || newUserData.name.length < 3) || (newUserData.email.length == 0) || (newUserData.password.length == 0) || (newUserData.cpassword.length == 0) || (newUserData.password != newUserData.cpassword)) {
       return true;
     }
 
@@ -99,22 +93,22 @@ function SignUp() {
 
           <div className="mb-3">
             <label htmlFor="name" className="form-label">Name</label>
-            <input type="text" className="form-control" id="name" value={newUserData.name}  name="name" onChange={handleOnChange} placeholder="eg. abd@123" />
+            <input type="text" className="form-control" id="name" value={newUserData.name} name="name" onChange={handleOnChange} placeholder="eg. abd@123" />
           </div>
 
           <div className="mb-3">
             <label htmlFor="email" className="form-label">Email address</label>
-            <input type="email" className="form-control" id="email" value={newUserData.email} name="email" aria-describedby="emailHelp" onChange={handleOnChange}  placeholder="eg. xyz123@mail.com"/>
+            <input type="email" className="form-control" id="email" value={newUserData.email} name="email" aria-describedby="emailHelp" onChange={handleOnChange} placeholder="eg. xyz123@mail.com" />
           </div>
 
           <div className="mb-3">
             <label htmlFor="password" className="form-label">Password</label>
-            <input type="password" className="form-control" id="password" value={newUserData.password} name="password" onChange={handleOnChange}  autoComplete={"true"} placeholder=" password length must be minimum 6"/>
+            <input type="password" className="form-control" id="password" value={newUserData.password} name="password" onChange={handleOnChange} autoComplete={"true"} placeholder=" password length must be minimum 6" />
           </div>
 
           <div className="mb-3">
             <label htmlFor="cpassword" className="form-label">Confirm Password</label>
-            <input type="password" className="form-control" id="cpassword" value={newUserData.cpassword} name="cpassword" onChange={handleOnChange}  autoComplete={"true"} />
+            <input type="password" className="form-control" id="cpassword" value={newUserData.cpassword} name="cpassword" onChange={handleOnChange} autoComplete={"true"} />
           </div>
 
           <button type="submit" disabled={handleDisable() ? true : false} className="btn btn-primary">Submit</button>

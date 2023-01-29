@@ -1,0 +1,64 @@
+-> Basic concept : 
+
+> if user goes to Home page and it is not loged in then it will automatically redireced to Login page. and user if
+new then it will go to SignUp page and make a new Account then it will goes to Notes section Page(automatically)
+where he can do CRUD operation on Own his Notes.
+
+> data comes from MongoDb, using Fetch API.
+
+/* Documentation for AlertContext */
+
+-> Alert have context in [context/AlertContext].
+-> It Consist main 4 Files.
+ 
+              [context]
+           1) AlertContext.js -> Context which is used By AlertState
+           2) AlertState.js -> AlertState have controls like Msgs,type,visibility.
+              
+              [Navbar]
+           1) Navbar.js -> It Consist  alert Component.
+             
+              [Alert]
+           1) Alert.js -> It will Fetch data from context and used it by props to its JSX structure.
+
+/* Documentation for Authorization Process */
+
+-> It Consist mainly 3 Process : 
+
+            1) Login
+            2) SignUp
+            3) Logout
+
+=> Login : 
+
+> By default Notes.js file open via /home. But it first detect token saved in sessionStorage. if there is no token it will Redirect to /Login.
+     
+           -> So see first logic of Notes.js (SavedNotes/Notes/Notes.js)
+           -> then go to login.js
+
+=> SignUp : 
+
+> If User not have made account then it will do SignUp first.
+     
+                -> go to SignUp.js
+
+=> Logout : 
+
+> User is logedin then it will from NavBar it will Logout by button.
+     
+                -> go to Navbar.js
+
+
+/* Documentation after login Process */
+
+-> It have main 2 components.
+       1) Adding notes
+       2) Showing notes
+
+
+> There is 2 sub components :
+         1) Edit
+         2) delete
+
+
+

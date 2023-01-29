@@ -8,20 +8,15 @@ function Navbar() {
 
     let Location = useLocation();
 
-    let navigate=useNavigate();
-
-
-    /*     useEffect(() => {
-            console.log(Location.pathname);
-        }, [Location]) */ // (No Need)
+    let navigate = useNavigate();
 
     /* <--  For showing Alert msgs --> */
 
     const context = useContext(AlertContext);
 
-    const { alert, showAlert,setAlertMsg } = context;
+    const { alert, showAlert, setAlertMsg } = context;
 
-    const handleOnLogout = () =>{
+    const handleOnLogout = () => {
 
         sessionStorage.removeItem('token');
 
@@ -51,10 +46,6 @@ function Navbar() {
                                 <Link className={`nav-link ${(Location.pathname === ("/home") || (Location.pathname === "/")) ? "active" : ""}`} to="/home">Home</Link>
                             </li>
 
-                            {/* <li className="nav-item">
-                                <Link className={`nav-link ${Location.pathname === "/about" ? "active" : ""}`} to="/about">About</Link>
-                            </li> */}
-
                         </ul>
 
 
@@ -77,9 +68,6 @@ function Navbar() {
 
                         </form>
 
-
-
-
                     </div>
 
                 </div>
@@ -91,6 +79,14 @@ function Navbar() {
             <div className="container" >
 
                 <Alert alert={alert} showAlert={showAlert} />
+
+                {/* 
+                
+                alert : have "msg" and "type" of Alert
+
+                showAlert : it defines that Alert should visible or not.
+
+                */}
 
             </div>
 
