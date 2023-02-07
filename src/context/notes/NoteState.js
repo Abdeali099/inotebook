@@ -59,7 +59,11 @@ const NoteState = (props) => {
 
         console.log("Response of addition : ",newNote.savedNotes);
 
+        // setSavedNotes(savedNotes.concate(newNote.savedNotes))
+
         setAlertMsg("Note Added Successfully!!", "success");
+
+
     }
 
     /* <--- delete Notes ---> */
