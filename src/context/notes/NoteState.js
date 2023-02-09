@@ -57,12 +57,13 @@ const NoteState = (props) => {
 
         const newNote = await response.json();
 
-        console.log("Response of addition : ",newNote.savedNotes);
+        // console.log("Response of addition : ",newNote.savedNotes);
 
         // setSavedNotes(savedNotes.concate(newNote.savedNotes))
 
         setAlertMsg("Note Added Successfully!!", "success");
 
+        fetchNote();
 
     }
 
