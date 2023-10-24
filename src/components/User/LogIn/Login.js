@@ -9,10 +9,10 @@ function Login() {
 
     const [credential, setCredential] = useState({ email: "", password: "" });
 
+    /* <--  For showing Alert msgs --> */
     const context = useContext(AlertContext);
     const {setAlertMsg} = context;
     
-    /* <--  For showing Alert msgs --> */
 
     const handelOnSubmit = async (e) => {
 
